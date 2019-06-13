@@ -1,5 +1,5 @@
 {
-  "ClientId": "YOUR CLIENT ID GOES HERE",
+  "ClientId": "6feb57fa92ce4991af705167b1a3b7f1",
   "RedirectUri": "https://jugacu.es/s/proyectS",
   "SocketServer": "https://jugacu-proyect-s.herokuapp.com"
 }
