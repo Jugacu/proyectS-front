@@ -41,8 +41,8 @@ export class SpotifyManager {
         });
 
         setInterval(() => {
-            this.refreshToken().then(data => {
-                this.socket.emit('access_token', ls('access_token'));
+            this.refreshToken().then(() => {
+                console.log('token refreshed via autorefresh');
             });
         }, 30 * 60 * 1000);
 
@@ -94,11 +94,7 @@ export class SpotifyManager {
             ls('access_token', data.access_token);
             ls('refresh_token', data.refresh_token);
         } else if (this.tokenExists() && this.isTokenExpired()) {
-            data = await this.refreshToken();
-            if (data && !data.error) {
-                ls('last_token_request', Date.now());
-                ls('access_token', data.access_token);
-            }
+            this.refreshToken().then(() => console.log('token refreshed via set token'));
         }
         return data;
     }
@@ -155,7 +151,21 @@ export class SpotifyManager {
             body: JSON.stringify({refresh_token: ls('refresh_token')})
         });
 
-        return await response.json();
+        const jsonResponse = await response.json();
+
+        if (jsonResponse && !jsonResponse.error) {
+            ls('last_token_request', Date.now());
+            ls('access_token', jsonResponse.access_token);
+            this.socket.emit('access_token', ls('access_token'));
+
+            return jsonResponse;
+        }
+
+        return new Promise<AccessTokenResponse>((resolve, reject) => reject(
+            {
+                error: 'Error while refreshing token'
+            }
+        ));
     }
 
     private async checkUrlForSpotifyAccessToken(): Promise<AccessTokenResponse> {
