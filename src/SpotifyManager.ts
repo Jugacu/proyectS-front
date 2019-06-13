@@ -94,7 +94,7 @@ export class SpotifyManager {
             ls('access_token', data.access_token);
             ls('refresh_token', data.refresh_token);
         } else if (this.tokenExists() && this.isTokenExpired()) {
-            this.refreshToken().then(() => console.log('token refreshed via set token'));
+            data = await this.refreshToken();
         }
         return data;
     }
@@ -156,7 +156,7 @@ export class SpotifyManager {
         if (jsonResponse && !jsonResponse.error) {
             ls('last_token_request', Date.now());
             ls('access_token', jsonResponse.access_token);
-            this.socket.emit('access_token', ls('access_token'));
+            this.socket.emit('access_token', {accessToken: ls('access_token')});
 
             return jsonResponse;
         }
