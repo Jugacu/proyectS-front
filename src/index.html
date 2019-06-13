@@ -1,0 +1,59 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ProyectS</title>
+    <link rel="stylesheet" href="/app.bundle.css">
+</head>
+<body id="owo">
+<div id="background"></div>
+<div id="background-smoother"></div>
+<div id="particles"></div>
+<div id="app">
+</div>
+<script id="app-template" type="text/template">
+    <div id="playbackContainer">
+        <div id="title">
+            <div id="playPause">
+                <i class="icon ion-md-play"></i>
+            </div>
+            <div id="songData">
+                <h2 id="albumName"></h2>
+                <h1 id="songName"></h1>
+            </div>
+        </div>
+        <div id="authorName" class="playBackItem"></div>
+    </div>
+    <div id="clockContainer">
+        <div id="big">
+            <div id="hour"></div>
+            <div id="marker">:</div>
+            <div id="minutes"></div>
+        </div>
+        <div id="smaller">
+            <div id="day"></div>
+            <div id="month"></div>
+            <div id="year"></div>
+        </div>
+    </div>
+    <div id="userContainer">
+        <div id="userCard">
+            <div id="userImg"></div>
+            <div id="userData">
+                <h1 id="userName"></h1>
+                <h2 id="userFollowers"></h2>
+            </div>
+        </div>
+    </div>
+</script>
+<script id="connect-template" type="text/template">
+    <div id="connect">
+        <div id="content">
+            <div id="spotify-icon"></div>
+            <p>¡Para poder usar esta aplicación tienes que conectarte con <em>Spotify</em> primero!</p>
+            <button id="connect-button">Connectar</button>
+        </div>
+    </div>
+</script>
+<script src="/main.bundle.js"></script>
+</body>
+</html>

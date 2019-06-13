@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://unpkg.com/ionicons@4.5.9-1/dist/css/ionicons.min.css');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  overflow: hidden;
+  background: #000;
+
+  #background-smoother {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .3);
+  }
+
+  #background {
+    position: absolute;
+    left: -5%;
+    top: -7.5%;
+    margin: -20px;
+    height: 120%;
+    width: 120%;
+    background-color: #000;
+    background-size: cover;
+    background-position: center 10%;
+    animation: moving 15s linear infinite forwards;
+    filter: blur(3px);
+  }
+
+  #particles {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+  }
+
+  @keyframes moving {
+    from {
+      transform: rotate(0deg) translateX(-5vw) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(-5vw) rotate(-360deg);
+    }
+
+  }
+
+  #app {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+
+    #clockContainer{
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      color: white;
+      text-shadow: 0 0 5px #fff;
+      text-transform: uppercase;
+      #big{
+        letter-spacing: 15px;
+        display: flex;
+        font-size: 5em;
+      }
+      #smaller{
+        display: flex;
+        justify-content: space-evenly;
+      }
+    }
+
+    #playbackContainer {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+
+      .playBackItem {
+        color: #FFF;
+        background: rgba(12, 12, 12, 0.78);
+        padding: 10px;
+        display: inline-block;
+        border-radius: 15px;
+        margin-top: 5px;
+      }
+
+      #title {
+        color: white;
+        background-image: repeating-linear-gradient(-45deg, rgba(12, 12, 12, 0.78), rgba(12, 12, 12, 0.78) 30px, rgba(26, 162, 74, 0.78) 25px, rgba(26, 162, 74, 0.78) 50px);
+        background-size: 150% 100%;
+        border-radius: 15px;
+        padding: 20px;
+        animation: progress 2s linear infinite;
+
+        @keyframes progress {
+          0% {
+            background-position: 0 0;
+          }
+          100% {
+            background-position: -70px 0px;
+          }
+        }
+
+        #playPause {
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 50px;
+          width: 50px;
+          vertical-align: middle;
+
+          i {
+            cursor: pointer;
+            font-size: 2em;
+          }
+        }
+
+        #songData {
+          display: inline-flex;
+          flex-direction: column;
+          justify-content: center;
+          height: 50px;
+          vertical-align: middle;
+          margin-left: 10px;
+          text-transform: uppercase;
+
+          h1 {
+            text-shadow: 0 0 5px #fff;
+          }
+
+          h1:hover {
+            color: rgba(29, 185, 84, 1);
+            text-shadow: 0 0 5px rgba(29, 185, 84, 1);
+          }
+
+          h2:hover {
+            color: rgba(29, 185, 84, .5);
+            text-shadow: 0 0 5px rgba(29, 185, 84, .5);
+          }
+
+          h2 {
+            font-size: 1em;
+            color: rgba(255, 255, 255, .5);
+            text-shadow: 0 0 2px #fff;
+          }
+
+          h1, h2 {
+            cursor: pointer;
+            margin: 0;
+          }
+        }
+      }
+    }
+
+    #userContainer {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+
+      #userImg {
+        height: 100px;
+        width: 100px;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 50%;
+        display: inline-block;
+        vertical-align: middle;
+        box-shadow: 0 0 20px -1px rgba(0, 0, 0, 0.7);
+      }
+
+      #userData {
+        position: relative;
+        z-index: -1;
+        height: 45px;
+        overflow: hidden;
+        vertical-align: middle;
+        background: rgba(12, 12, 12, 0.78);
+        color: white;
+        margin-left: -25px;
+        border-radius: 5px;
+        padding: 10px;
+        text-transform: uppercase;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-shadow: 0 0 5px #fff;
+      }
+
+      h1, h2 {
+        margin: 0 25px 0 30px;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+
+      h2 {
+        font-size: 1.1em;
+        color: rgba(255, 255, 255, 0.7);
+      }
+    }
+  }
+
+  #connect {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(29, 185, 84, .5);
+
+    #content {
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 300px;
+
+      #spotify-icon {
+        width: 100px;
+        height: 100px;
+        background: transparent url('../images/Spotify_Icon_CMYK_White.png');
+        -webkit-background-size: cover;
+        background-size: cover;
+        display: inline-block;
+      }
+
+      #connect-button {
+        cursor: pointer;
+        border: 0px;
+        background-color: hsl(141, 73%, 42%);
+        border-radius: 500px;
+        color: hsl(0, 0%, 100%);
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        line-height: 14px;
+        margin: 20px 0px;
+        padding: 18px 48px 16px;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
