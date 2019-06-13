@@ -156,7 +156,7 @@ export class SpotifyManager {
         if (jsonResponse && !jsonResponse.error) {
             ls('last_token_request', Date.now());
             ls('access_token', jsonResponse.access_token);
-            this.socket.emit('access_token', {accessToken: ls('access_token')});
+            this.socket.emit('access_token', ls('access_token'));
 
             return jsonResponse;
         }
